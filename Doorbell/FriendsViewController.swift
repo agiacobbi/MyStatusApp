@@ -19,7 +19,6 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
 
         // Do any additional setup after loading the view.
         loadFriends()
-        
         listenForChanges()
     }
     
@@ -37,7 +36,6 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             
             self.tableView.reloadData()
-            print(self.friends.debugDescription)
         })
     }
     
@@ -45,7 +43,6 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     func listenForChanges() {
         ref.child("users").observe(.childChanged, with: { (snapshot) in
             let change = snapshot.value as! [String: AnyObject]
-            print(change.debugDescription)
             
             for i in 0..<self.friends.count {
                 if self.friends[i].email == change["email"] as! String {
@@ -55,7 +52,6 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             
             self.tableView.reloadData()
         })
-        
     }
 
     /*

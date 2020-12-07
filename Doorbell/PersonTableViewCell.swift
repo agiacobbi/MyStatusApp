@@ -26,7 +26,11 @@ class PersonTableViewCell: UITableViewCell {
     func update(_ name: String, withStatus status: Bool, email: String) {
         nameLabel.text = name
         emailLabel.text = email
-        statusLabel.text = "\(status)"
+        if status {
+            statusLabel.text = "Available"
+        } else {
+            statusLabel.text = "Busy"
+        }
     }
 
 }
