@@ -29,7 +29,7 @@
                                         <rect key="frame" x="54" y="73" width="47" height="30"/>
                                         <state key="normal" title="Sign In"/>
                                         <connections>
-                                            <segue destination="vKs-Xi-HAj" kind="showDetail" id="g5c-hh-YaY"/>
+                                            <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gpx-zE-QPx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -42,6 +42,9 @@
                             <constraint firstItem="FmL-cF-Kbq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kvc-I5-TdW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="vKs-Xi-HAj" kind="show" identifier="segueToLoggedIn" id="8YT-YS-71Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -50,7 +53,7 @@
         <!--Friends-->
         <scene sceneID="QeD-Jp-QWf">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Ve5-eP-eBe" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Ve5-eP-eBe" customClass="FriendsViewController" customModule="Doorbell" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1F3-Ie-IK5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,15 +68,63 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="rAu-Or-PoT">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" id="rAu-Or-PoT" customClass="PersonTableViewCell" customModule="Doorbell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rAu-Or-PoT" id="Nd1-Wf-cJb">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="124" translatesAutoresizingMaskIntoConstraints="NO" id="Fjq-bw-3Et">
+                                                    <rect key="frame" x="8" y="0.0" width="398" height="58"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EAU-GU-kFI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="226" height="57.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYa-Lx-Trf">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="226" height="29"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azb-qF-1ha">
+                                                                    <rect key="frame" x="0.0" y="37" width="226" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOl-yD-Ifq">
+                                                            <rect key="frame" x="350" y="0.0" width="48" height="58"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="sOl-yD-Ifq" firstAttribute="centerY" secondItem="Fjq-bw-3Et" secondAttribute="centerY" id="35x-qs-AyF"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Fjq-bw-3Et" firstAttribute="leading" secondItem="Nd1-Wf-cJb" secondAttribute="leading" constant="8" id="5fF-eT-L1H"/>
+                                                <constraint firstItem="Fjq-bw-3Et" firstAttribute="top" secondItem="Nd1-Wf-cJb" secondAttribute="top" id="70z-83-bWp"/>
+                                                <constraint firstAttribute="bottom" secondItem="Fjq-bw-3Et" secondAttribute="bottom" id="OhN-jD-bmb"/>
+                                                <constraint firstAttribute="trailing" secondItem="Fjq-bw-3Et" secondAttribute="trailing" constant="8" id="fzU-bY-ZOI"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="emailLabel" destination="azb-qF-1ha" id="dIG-ff-8Vq"/>
+                                            <outlet property="nameLabel" destination="xYa-Lx-Trf" id="fcK-6A-UKp"/>
+                                            <outlet property="statusLabel" destination="sOl-yD-Ifq" id="K9c-SX-khE"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ve5-eP-eBe" id="09h-fS-N89"/>
+                                    <outlet property="delegate" destination="Ve5-eP-eBe" id="dwK-m7-RXE"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="V7F-Mm-fqO"/>
@@ -89,6 +140,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="person.2.fill" catalog="system" selectedImage="person.2.fill" id="Hut-jF-vhP"/>
+                    <connections>
+                        <outlet property="tableView" destination="wr2-vJ-4hT" id="SvY-31-e06"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPq-YD-C46" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -97,7 +151,7 @@
         <!--Status-->
         <scene sceneID="3fk-pj-OnH">
             <objects>
-                <viewController id="d8c-VI-oSH" sceneMemberID="viewController">
+                <viewController id="d8c-VI-oSH" customClass="StatusViewController" customModule="Doorbell" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O8z-E6-sXR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,6 +173,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6K5-Da-W8B">
                                         <rect key="frame" x="22" y="123" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="switchToggled" destination="d8c-VI-oSH" eventType="valueChanged" id="rRO-FH-QzL"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                             </stackView>
@@ -132,6 +189,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Status" image="switch.2" catalog="system" selectedImage="switch.2" id="bjF-uM-vjr"/>
                     <navigationItem key="navigationItem" id="llq-96-NRH"/>
+                    <connections>
+                        <outlet property="statusLabel" destination="YV1-sQ-lX3" id="ACJ-Md-ipC"/>
+                        <outlet property="statusSwitch" destination="6K5-Da-W8B" id="vUc-zg-YX9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cms-eJ-tRC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -144,12 +205,13 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cyg-VD-WjD"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nkd-bK-dIP">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Ve5-eP-eBe" kind="relationship" relationship="viewControllers" id="eoq-hd-ABV"/>
                         <segue destination="d8c-VI-oSH" kind="relationship" relationship="viewControllers" id="YNY-vn-Rf2"/>
+                        <segue destination="Ve5-eP-eBe" kind="relationship" relationship="viewControllers" id="eoq-hd-ABV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PUJ-D2-HhV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

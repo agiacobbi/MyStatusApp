@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,9 +13,16 @@
 		9C560B362571A3A4007AC6DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C560B342571A3A4007AC6DE /* Main.storyboard */; };
 		9C560B382571A3A4007AC6DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C560B372571A3A4007AC6DE /* Assets.xcassets */; };
 		9C560B3B2571A3A4007AC6DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C560B392571A3A4007AC6DE /* LaunchScreen.storyboard */; };
+		9CAE605E257566D40071EA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAE605D257566D40071EA32 /* GoogleService-Info.plist */; };
+		9CFCB7FC257DA1D8000DB79A /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFCB7FB257DA1D8000DB79A /* FriendsViewController.swift */; };
+		9CFCB7FF257DA1FA000DB79A /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFCB7FE257DA1FA000DB79A /* StatusViewController.swift */; };
+		9CFCB821257DE013000DB79A /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFCB820257DE013000DB79A /* PersonTableViewCell.swift */; };
+		BDE8B509630376940B46C39F /* Pods_Doorbell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B2133FFF95B13D4F833FCE /* Pods_Doorbell.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		68EDA329504EA61044D79754 /* Pods-Doorbell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doorbell.release.xcconfig"; path = "Target Support Files/Pods-Doorbell/Pods-Doorbell.release.xcconfig"; sourceTree = "<group>"; };
+		71B2133FFF95B13D4F833FCE /* Pods_Doorbell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doorbell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C560B2B2571A3A4007AC6DE /* Doorbell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doorbell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C560B2E2571A3A4007AC6DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C560B302571A3A4007AC6DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +31,11 @@
 		9C560B372571A3A4007AC6DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C560B3A2571A3A4007AC6DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C560B3C2571A3A4007AC6DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CAE605D257566D40071EA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9CFCB7FB257DA1D8000DB79A /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		9CFCB7FE257DA1FA000DB79A /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		9CFCB820257DE013000DB79A /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		A9075A391BC006BFDF0F7496 /* Pods-Doorbell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doorbell.debug.xcconfig"; path = "Target Support Files/Pods-Doorbell/Pods-Doorbell.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE8B509630376940B46C39F /* Pods_Doorbell.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80867C4A21422E82FF55598E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71B2133FFF95B13D4F833FCE /* Pods_Doorbell.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9C560B222571A3A4007AC6DE = {
 			isa = PBXGroup;
 			children = (
 				9C560B2D2571A3A4007AC6DE /* Doorbell */,
 				9C560B2C2571A3A4007AC6DE /* Products */,
+				C07DC5A4F5B8FFADA1F791D2 /* Pods */,
+				80867C4A21422E82FF55598E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +86,21 @@
 				9C560B372571A3A4007AC6DE /* Assets.xcassets */,
 				9C560B392571A3A4007AC6DE /* LaunchScreen.storyboard */,
 				9C560B3C2571A3A4007AC6DE /* Info.plist */,
+				9CAE605D257566D40071EA32 /* GoogleService-Info.plist */,
+				9CFCB7FB257DA1D8000DB79A /* FriendsViewController.swift */,
+				9CFCB7FE257DA1FA000DB79A /* StatusViewController.swift */,
+				9CFCB820257DE013000DB79A /* PersonTableViewCell.swift */,
 			);
 			path = Doorbell;
+			sourceTree = "<group>";
+		};
+		C07DC5A4F5B8FFADA1F791D2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A9075A391BC006BFDF0F7496 /* Pods-Doorbell.debug.xcconfig */,
+				68EDA329504EA61044D79754 /* Pods-Doorbell.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C560B3F2571A3A4007AC6DE /* Build configuration list for PBXNativeTarget "Doorbell" */;
 			buildPhases = (
+				C4216A556A15613997CB3E0A /* [CP] Check Pods Manifest.lock */,
 				9C560B272571A3A4007AC6DE /* Sources */,
 				9C560B282571A3A4007AC6DE /* Frameworks */,
 				9C560B292571A3A4007AC6DE /* Resources */,
+				C1A2A1EE27E28065990D4D78 /* [CP] Embed Pods Frameworks */,
+				7A9EA32A7F74995C6CBACBD4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C560B3B2571A3A4007AC6DE /* LaunchScreen.storyboard in Resources */,
+				9CAE605E257566D40071EA32 /* GoogleService-Info.plist in Resources */,
 				9C560B382571A3A4007AC6DE /* Assets.xcassets in Resources */,
 				9C560B362571A3A4007AC6DE /* Main.storyboard in Resources */,
 			);
@@ -132,14 +172,76 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7A9EA32A7F74995C6CBACBD4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Doorbell/Pods-Doorbell-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Doorbell/Pods-Doorbell-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Doorbell/Pods-Doorbell-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1A2A1EE27E28065990D4D78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Doorbell/Pods-Doorbell-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Doorbell/Pods-Doorbell-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Doorbell/Pods-Doorbell-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4216A556A15613997CB3E0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Doorbell-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9C560B272571A3A4007AC6DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CFCB821257DE013000DB79A /* PersonTableViewCell.swift in Sources */,
+				9CFCB7FC257DA1D8000DB79A /* FriendsViewController.swift in Sources */,
 				9C560B332571A3A4007AC6DE /* ViewController.swift in Sources */,
 				9C560B2F2571A3A4007AC6DE /* AppDelegate.swift in Sources */,
 				9C560B312571A3A4007AC6DE /* SceneDelegate.swift in Sources */,
+				9CFCB7FF257DA1FA000DB79A /* StatusViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +385,7 @@
 		};
 		9C560B402571A3A4007AC6DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9075A391BC006BFDF0F7496 /* Pods-Doorbell.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,6 +404,7 @@
 		};
 		9C560B412571A3A4007AC6DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68EDA329504EA61044D79754 /* Pods-Doorbell.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
