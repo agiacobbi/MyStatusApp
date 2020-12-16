@@ -13,6 +13,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     var friends: [(name: String, email: String, status: Bool)] = []
     var ref: DatabaseReference! = Database.database().reference()
+    var user: User = Auth.auth().currentUser!
 
     override func viewDidLoad() {
         super.viewDidLoad()

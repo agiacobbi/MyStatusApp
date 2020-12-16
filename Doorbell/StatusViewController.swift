@@ -13,13 +13,13 @@ class StatusViewController: UIViewController {
     var user: User = Auth.auth().currentUser!
     @IBOutlet weak var statusSwitch: UISwitch!
     @IBOutlet weak var statusLabel: UILabel!
-    var red: UIColor = UIColor(red: CGFloat(240.0), green: CGFloat(190.0), blue: CGFloat(170.0), alpha: CGFloat(1.0))
-    var green: UIColor = UIColor(red: CGFloat(190.0), green: CGFloat(240.0), blue: CGFloat(170.0), alpha: CGFloat(1.0))
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addUserIfNotExists()
 
         // Do any additional setup after loading the view.
         ref.child("users").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -35,18 +35,30 @@ class StatusViewController: UIViewController {
     }
     
     
+    
+    func addUserIfNotExists() {
+        ref.child("users").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            if !snapshot.exists() {
+                print("user not found in the db...adding user")
+                
+                self.ref.child("users").child(self.user.uid).setValue([
+                    "username": self.user.displayName!,
+                    "status": self.statusSwitch.isOn,
+                    "email": self.user.email!
+                ])
+            }
+        })
+    }
+    
+    
     func updateStatus() {
-        self.ref.child("users").child(user.uid).setValue([
-            "username": user.displayName!,
-            "status": statusSwitch.isOn,
-            "email": user.email!
-        ])
+        self.ref.child("users").child(user.uid).child("status").setValue(statusSwitch.isOn)
         
         if statusSwitch.isOn {
-            self.view.backgroundColor = red
+            self.view.backgroundColor = .systemGreen
             statusLabel.text = "Available"
         } else {
-            self.view.backgroundColor = green
+            self.view.backgroundColor = .systemOrange
             statusLabel.text = "Busy"
         }
     }
