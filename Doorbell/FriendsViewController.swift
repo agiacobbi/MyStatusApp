@@ -26,18 +26,19 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     func loadFriends() {
-        ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-            let usersDict = snapshot.value as! [String: [String: AnyObject]]
+        ref.child("following").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            let usersDict = snapshot.value as! [String: AnyObject]
 
             for key in usersDict.keys {
-                let userEntry = usersDict[key]
-                let userName = userEntry?["username"] as! String
-                let userEmail = userEntry?["email"] as! String
-                let userStatus = userEntry?["status"] as! Bool
-                self.friends.append((userName, userEmail, userStatus))
+                self.ref.child("users").child(key).observeSingleEvent(of: .value, with: { (dataSnap) in
+                    let info = dataSnap.value as! [String: AnyObject]
+                    let userName = info["username"] as! String
+                    let userEmail = info["email"] as! String
+                    let userStatus = info["status"] as! Bool
+                    self.friends.append((userName, userEmail, userStatus))
+                    self.tableView.reloadData()
+                })
             }
-            
-            self.tableView.reloadData()
         })
     }
     
@@ -81,6 +82,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
                         let userStatus = userEntry?["status"] as! Bool
                         self.friends.append((userName, userEmail, userStatus))
                         self.ref.child("following").child(self.user.uid).child(key).setValue(true)
+                        self.tableView.reloadData()
                     }
                 
                 } else {

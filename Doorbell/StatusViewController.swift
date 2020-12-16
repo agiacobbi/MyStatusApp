@@ -46,6 +46,8 @@ class StatusViewController: UIViewController {
                     "status": self.statusSwitch.isOn,
                     "email": self.user.email!
                 ])
+                
+                self.ref.child("following").child(self.user.uid).setValue([self.user.uid: true])
             }
         })
     }
