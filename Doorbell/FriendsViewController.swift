@@ -15,6 +15,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     var ref: DatabaseReference! = Database.database().reference()
     var user: User = Auth.auth().currentUser!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,6 +54,46 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             
             self.tableView.reloadData()
         })
+    }
+    
+    
+    @IBAction func addFriendButtonPressed(_ sender: Any) {
+        var alertTextField = UITextField()
+        let alert = UIAlertController(title: "Add New Friend", message: "Search for a friend by their email", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Email Address"
+            alertTextField = textField
+        }
+        
+        let action = UIAlertAction(title: "Add Friend", style: .default, handler: { _ in
+            let email = alertTextField.text!
+            
+            self.ref.child("users").queryOrdered(byChild: "email").queryEqual(toValue: email).observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.exists() {
+                    let usersDict = snapshot.value as! [String: [String: AnyObject]]
+
+                    for key in usersDict.keys {
+                        print(key)
+                        let userEntry = usersDict[key]
+                        let userName = userEntry?["username"] as! String
+                        let userEmail = userEntry?["email"] as! String
+                        let userStatus = userEntry?["status"] as! Bool
+                        self.friends.append((userName, userEmail, userStatus))
+                        self.ref.child("following").child(self.user.uid).child(key).setValue(true)
+                    }
+                
+                } else {
+                    print("user not found")
+                    let errorAlert = UIAlertController(title: "Couldn't find user", message: "A person associated with the email you provided does not exist in our system", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
+            })
+        })
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 
     /*
