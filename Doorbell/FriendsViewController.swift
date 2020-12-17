@@ -1,6 +1,7 @@
 //
 //  FriendsViewController.swift
 //  Doorbell
+//  This program handles the table view that displays a users's friends and thier statuses
 //
 //  Created by Giacobbi, Alexander T on 12/6/20.
 //
@@ -25,6 +26,9 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
+    /**
+     gets the statuses of all friends that the user follows fromthe firebase db referenceloads them into the datasource and updates the table view
+     */
     func loadFriends() {
         ref.child("following").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             let usersDict = snapshot.value as! [String: AnyObject]
@@ -43,6 +47,9 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
+    /**
+     Listens for changes to the dtbase and updates the correspondincell ifit exists in the table
+     */
     func listenForChanges() {
         ref.child("users").observe(.childChanged, with: { (snapshot) in
             let change = snapshot.value as! [String: AnyObject]
@@ -58,6 +65,9 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
+    /**
+    Prompts the user tfo an email of a friend to add. If found in the datastore, the friend is added to the table view
+     */
     @IBAction func addFriendButtonPressed(_ sender: Any) {
         var alertTextField = UITextField()
         let alert = UIAlertController(title: "Add New Friend", message: "Search for a friend by their email", preferredStyle: .alert)
@@ -108,6 +118,9 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     */
     
+    /**
+     tabel view delgate method for number of rows in datasoruce
+     */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return friends.count
@@ -115,6 +128,10 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         return 0
     }
     
+    
+    /**
+     tableview delegate method for loading contents into a cell
+     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let friend = friends[row]
