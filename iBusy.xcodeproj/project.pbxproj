@@ -140,7 +140,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9C560B262571A3A4007AC6DE /* Build configuration list for PBXProject "Doorbell" */;
+			buildConfigurationList = 9C560B262571A3A4007AC6DE /* Build configuration list for PBXProject "iBusy" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -424,7 +424,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9C560B262571A3A4007AC6DE /* Build configuration list for PBXProject "Doorbell" */ = {
+		9C560B262571A3A4007AC6DE /* Build configuration list for PBXProject "iBusy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C560B3D2571A3A4007AC6DE /* Debug */,
